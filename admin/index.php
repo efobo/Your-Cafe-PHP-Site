@@ -1,35 +1,42 @@
-<html>
-    <head>
-        <title>Your ♥ Café - Home page</title>
-        <link rel="stylesheet" href="../css/admin.css">
-    </head>
-
-    <body>
-        <!-- Menu Section Starts -->
-        <div class="menu">
-            <div class="wrapper">
-                Menu goes here
-            </div>
-           
-        </div>
-        <!-- Menu Section Ends -->
+<?php include('partials/menu.php'); ?>
 
         <!-- Main Content Section Starts -->
         <div class="main-content">
             <div class="wrapper">
-            Main Content goes here
+            <h1>DASHBOARD</h1>
+
+            <div class="col-4 text-center">
+                <h1>5</h1>
+                <br>
+                Categories
+            </div>
+            
+
+            <div class="col-4 text-center">
+                <h1>5</h1>
+                <br>
+                Categories
+            </div>
+            
+
+            <div class="col-4 text-center">
+                <h1>5</h1>
+                <br>
+                Categories
+            </div>
+            
+
+            <div class="col-4 text-center">
+                <h1>5</h1>
+                <br>
+                Categories
+            </div>
+            
+            <div class="clearfix"></div>
+
             </div>
             
         </div>
         <!-- Main Content Section Ends -->
 
-        <!-- Footer Section Starts -->
-        <div class="footer">
-            <div class="wrapper">
-                <p>2022 All rights reserved, Your ♥ Café. Developed by <a href="https://github.com/efobo">efobo</a></p>
-            </div>
-            
-        </div>
-        <!-- Footer Section Ends -->
-    </body>
-</html>
+        <?php include('partials/footer.php'); ?>
