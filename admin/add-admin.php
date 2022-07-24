@@ -79,12 +79,12 @@
         // and display appropriate message
         if ($res) 
         {
-            $_SESSION['add'] = "Admin added successfully";
+            $_SESSION['add'] = "<div class='success'>Admin added successfully</div>";
             header("location:".SITEURL."admin/manage-admin.php");
         }
         else
         {
-            $_SESSION['add'] = "Faild to Add Admin";
+            $_SESSION['add'] = "<div class='error'>Faild to Add Admin</div>";
             header("location:".SITEURL."admin/add-admin.php");
         }
     }
