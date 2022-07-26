@@ -21,6 +21,12 @@
                     unset($_SESSION['login']);
                 }
 
+                if (isset($_SESSION['no-login-message']))
+                {
+                    echo $_SESSION['no-login-message'];
+                    unset($_SESSION['no-login-message']);
+                }
+
             ?>
             
             <br>
@@ -60,6 +66,8 @@
             if ($count == 1)
             {
                 $_SESSION['login'] = "<div class='success'>Login Successful</div>";
+                $_SESSION['user'] = $username;
+
                 header('location:'.SITEURL.'admin/');
             }
             else
