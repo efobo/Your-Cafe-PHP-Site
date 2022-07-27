@@ -112,6 +112,12 @@
                 if (isset($_FILES['image']['name']))
                 {
                     $image_name = $_FILES['image']['name'];
+
+                    $ext = end(explode('.', $image_name));
+
+
+                    $image_name = "Food_Category_".rand(000, 999).'.'.$ext;
+
                     $source_path = $_FILES['image']['tmp_name'];
                     $destination_path = "../img/category/".$image_name;
 
