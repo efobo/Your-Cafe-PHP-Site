@@ -21,17 +21,31 @@
                 echo '<br><br>';
                 unset($_SESSION['add']);
             }
+
+            if (isset($_SESSION['upload']))
+            {
+                echo $_SESSION['upload'];
+                echo '<br><br>';
+                unset($_SESSION['upload']);
+            }
         ?>
 
 
         <!-- Add Category Form Starts -->
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
 
             <table class="tbl-30">
                 <tr>
                     <td>Title: </td>
                     <td>
                         <input type="text" name="title" placeholder="Category Title">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Select Image: </td>
+                    <td>
+                        <input type="file" name="image">
                     </td>
                 </tr>
 
@@ -91,10 +105,33 @@
                     header('location:'.SITEURL.'admin/add-category.php');
                 }
 
+                //print_r($_FILES['image']);
+
+                //die();
+
+                if (isset($_FILES['image']['name']))
+                {
+                    $image_name = $_FILES['image']['name'];
+                    $source_path = $_FILES['image']['tmp_name'];
+                    $destination_path = "../img/category/".$image_name;
+
+                    $upload = move_uploaded_file($source_path, $destination_path);
+
+                    if ($upload == false)
+                    {
+                        $_SESSION['upload'] = "<div class='error text-center'>Failed to Upload Image</div>";
+                        header('location:'.SITEURL.'admin/add-category.php');
+                        die();
+                    }
+                }
+                else
+                {
+                    $image_name ="";
+                }
 
                 $sql = "INSERT INTO tbl_category SET
                 title='$title',
-                image_name='1',
+                image_name='$image_name',
                 featured='$featured',
                 active='$active'
                 ";
