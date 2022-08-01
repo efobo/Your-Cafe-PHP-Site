@@ -32,6 +32,18 @@
                 unset($_SESSION['unauthorize']);
             }
 
+            if (isset($_SESSION['remove-failed']))
+            {
+                echo $_SESSION['remove-failed'];
+                unset($_SESSION['remove-failed']);
+            }
+
+            if (isset($_SESSION['update']))
+            {
+                echo $_SESSION['update'];
+                unset($_SESSION['update']);
+            }
+
         ?>
 
         <br><br>
@@ -99,8 +111,8 @@
                                 <td><?php echo $featured; ?></td>
                                 <td><?php echo $active; ?></td>
                                 <td>
-                                    <a href="#" class="btn-secondary">Update Admin</a>
-                                    <a href="<?php echo SITEURL;?>admin/delete-food.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn-danger">Delete Admin</a>
+                                    <a href="<?php echo SITEURL;?>admin/update-food.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn-secondary">Update Food</a>
+                                    <a href="<?php echo SITEURL;?>admin/delete-food.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn-danger">Delete Food</a>
                                     
                                 </td>
                             </tr>
