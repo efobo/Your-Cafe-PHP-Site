@@ -74,6 +74,28 @@
 
 <br><br>
 
+##### URL/admin/manage-food
+
+<p>Добавлены возможности:</p>
+<ul>
+    <li>Добавить позицию в меню</li>
+    <li>Обновить данные о позиции в меню</li>
+    <li>Удалить позицию меню</li>
+</ul>
+
+
+<img src="readme/manage-food.png">
+
+##### URL/admin/add-food.php
+
+<img src="readme/add-food.png">
+
+##### URL/admin/update-food.php
+
+<img src="readme/update-food.png">
+
+<br><br>
+
 <p></p>
 <p></p>
 <p></p>
