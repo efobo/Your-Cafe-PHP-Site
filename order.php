@@ -1,5 +1,35 @@
 <?php include('partials-front/menu.php'); ?>
 
+<?php
+
+    if (isset($_GET['food_id']))
+    {
+        $food_id = $_GET['food_id'];
+
+        $sql = "SELECT * FROM tbl_food WHERE id=$food_id";
+        $res = mysqli_query($conn, $sql);
+
+        $count = mysqli_num_rows($res);
+        if ($count==1)
+        {
+            $row = mysqli_fetch_assoc($res);
+            
+            $title = $row['title'];
+            $price = $row['price'];
+            $image_name = $row['image_name'];
+            
+        }
+        else
+        {
+            header('location:'.SITEURL); 
+        }
+    }
+    else
+    {
+        header('location:'.SITEURL);
+    }
+?>
+
 
      <!-- Food Search Section Starts Here -->
      <section class="order-area text-center">
@@ -14,12 +44,25 @@
                     <br>
 
                     <div class="food-menu-img">
-                        <img src="img/menu-honey-cake.jpg" alt="Honey cake" class="img-responsive img-curve">
+                        <?php
+                        
+                        if ($image_name == "")
+                        {
+                            echo "<div class='error'>Image not Available</div>";
+                        }
+                        else
+                        {
+                            ?>
+                            <img src="<?php echo SITEURL;?>img/food/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" class="img-responsive img-curve">
+                            <?php
+                        }
+                        ?>
+                        
                     </div>
 
                     <div class="food-menu-desc">
-                        <h3>Honey cake</h3>
-                        <p class="food-price">$2.3</p>
+                        <h3><?php echo $title; ?></h3>
+                        <p class="food-price">$<?php echo $price; ?></p>
 
                         <div class="order-label">Quantity</div>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
