@@ -1,42 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your ♥ Café</title>
-
-    <link rel="icon" href="img/icon.png" type="image/png">
-    <link rel="stylesheet" href="css/style.css">
-    
-</head>
-<body>
-    <!-- Navbar Section Starts Here -->
-    <section class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="img/logo.png" alt="Cafe logo" class="img-responsive">
-            </div>
-            <div class="menu text-right">
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="categories.html">About</a>
-                    </li>
-                    <li>
-                        <a href="foods.html">Food</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <!-- Navbar Section Ends Here -->
+<?php include('partials-front/menu.php'); ?>
 
     <!-- Food Search Section Starts Here -->
     <section class="food-search text-center">
@@ -55,28 +17,56 @@
         <div class="container">
             <h2 class="text-center">Categories</h2>
 
-            <a href="category-foods.html">
-                <div class="box-3 float-container">
-                    <img src="img/cake.jpg" alt="Cake" class="img-responsive img-curve">
+            <?php
+                $sql = "SELECT * FROM tbl_category WHERE active='Yes' AND featured='Yes' LIMIT 3";
+                $res = mysqli_query($conn, $sql);
 
-                    <h3 class="float-text text-white grey-bg darkred-hover">Cakes</h3>
-                </div>
-            </a>
+                $count = mysqli_num_rows($res);
 
-            <a href="#">
-                <div class="box-3 float-container">
-                    <img src="img/bakery.jpg" alt="Bakery" class="img-responsive img-curve">
+                if ($count > 0)
+                {
+                    while ($row = mysqli_fetch_assoc($res))
+                    {
+                        $id = $row['id'];
+                        $title = $row['title'];
+                        $image_name = $row['image_name'];
+                        ?>
 
-                    <h3 class="float-text text-white grey-bg darkred-hover">Bakery</h3>
-                </div>
-            </a>
-            <a href="#">
-                <div class="box-3 float-container">
-                    <img src="img/breakfast.jpg" alt="Breakfast" class="img-responsive img-curve">
+                        <a href="category-foods.html">
+                            <div class="box-3 float-container">
+                                <?php 
+                                    if ($image_name == "")
+                                    {
+                                        echo "<div class='error'>Image not Available</div>";
+                                    }
+                                    else
+                                    {
+                                        ?>
 
-                    <h3 class="float-text text-white grey-bg darkred-hover">Breakfast</h3>
-                </div>
-            </a>
+                                        <img src="<?php echo SITEURL; ?>img/category/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" class="img-responsive img-curve">
+                                        
+                                        <?php
+                                    }
+                                ?>
+                                
+
+                                <h3 class="float-text text-white grey-bg darkred-hover"><?php echo $title; ?></h3>
+                            </div>
+                        </a>
+
+                        <?php
+                    }
+                }
+                else
+                {
+                    echo "<div class='error'>Category Not Added</div>";
+                }
+            ?>
+
+            
+
+            
+            
 
             <div class="clearfix"></div>
         </div>
@@ -88,114 +78,78 @@
     <section class="food-menu">
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
+
+            <?php
             
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="img/menu-cake.jpg" alt="Esterházy cake" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Esterházy cake</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        This is the first dessert for which we baked biscuits made from nut flour (almonds + walnuts). The cake is generously soaked with a delicate cream made of natural cream and decorated with almond petals.
-                    </p>
-                    <br>
-                    <a href="order.html" class="btn btn-primary">Order now</a>
-                </div>
+                $sql2 = "SELECT * FROM tbl_food WHERE active='Yes' AND featured='Yes' LIMIT 6";
+                $res2 = mysqli_query($conn, $sql2);
 
-                <div class="clearfix"></div>
+                $count = mysqli_num_rows($res2);
+                if ($count > 0)
+                {
+                    while ($row = mysqli_fetch_assoc($res2))
+                    {
+                        $id = $row['id'];
+                        $title = $row['title'];
+                        $price = $row['price'];
+                        $description = $row['description'];
+                        $image_name = $row['image_name'];
+                        ?>
 
-            </div>
+                        <div class="food-menu-box">
+                            <div class="food-menu-img">
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="img/menu-honey-cake.jpg" alt="Honey cake" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Honey cake</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Airy custard biscuits with a delicate taste of honey conquer with their aroma and tenderness! Honey sponge cake is soaked with cream made of sour cream and natural cream.
-                    </p>
-                    <br>
-                    <a href="#" class="btn btn-primary">Order now</a>
-                </div>
+                                <?php
+                                
+                                if ($image_name == "")
+                                {
+                                    echo "<div class='error'>Image not Available</div>";
+                                }
+                                else
+                                {
+                                    ?>
 
-                <div class="clearfix"></div>
+                                    <img src="<?php echo SITEURL; ?>img/food/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" class="img-responsive img-curve">
 
-            </div>
+                                    <?php
+                                }
+                                ?>
+                                
+                            </div>
+                            <div class="food-menu-desc">
+                                <h4><?php echo $title; ?></h4>
+                                <p class="food-price">$<?php echo $price?></p>
+                                <p class="food-detail">
+                                    <?php echo $description; ?>
+                                </p>
+                                <br>
+                                <a href="order.html" class="btn btn-primary">Order now</a>
+                            </div>
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="img/menu-chocolate-croissant.jpg" alt="Croissant with chocolate-nut filling" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Croissant with chocolate-nut filling</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        A delicate layer inside and glossy stripes on the outside will not leave anyone indifferent! Light chocolate mousse and nut notes give the baking a powerful flavor dynamic.
-                    </p>
-                    <br>
-                    <a href="#" class="btn btn-primary">Order now</a>
-                </div>
+                            <div class="clearfix"></div>
 
-                <div class="clearfix"></div>
+                        </div>
 
-            </div>
+                        <?php
+                    }
+                }
+                else
+                {
+                    echo "<div class='error'>Food not Available</div>";
+                }
+            ?>
+            
+           
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="img/menu-puff-lingonberries.jpg" alt="Puff with Lingonberries" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Puff with Lingonberries</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Delicate airy puff pastry with custard and lingonberry berries. We did not use heat treatment to prepare the filling, which is why the berries retained all the vitamins and nutrients.
-                    </p>
-                    <br>
-                    <a href="#" class="btn btn-primary">Order now</a>
-                </div>
+            
 
-                <div class="clearfix"></div>
+            
 
-            </div>
+            
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="img/menu-porridge.jpg" alt="Oatmeal porridge with chocolate-covered banana and nuts" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Oatmeal porridge with chocolate-covered banana and nuts</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Natural milk, drinking water, hercules flakes, granulated sugar, salt. Chocolate sauce with banana and walnut.
-                    </p>
-                    <br>
-                    <a href="#" class="btn btn-primary">Order now</a>
-                </div>
+            
 
-                <div class="clearfix"></div>
-
-            </div>
-
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="img/menu-omelet.jpg" alt="Omelet with vegetables" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Omelet with vegetables</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Melange, vegetables (corn, green peas, bell pepper, carrots), natural 3.2% milk, mayonnaise (refined sunflower oil, deodorized, water, egg yolk, salt, potato starch thickener, acetic acid, citric acid, natural stabilizers (guar gum), Mustard flavor, natural beta-dyecarotene), wheat flour, refined sunflower oil, salt.
-                    </p>
-                    <br>
-                    <a href="#" class="btn btn-primary">Order now</a>
-                </div>
-
-                <div class="clearfix"></div>
-
-            </div>
+            
             
 
             <div class="clearfix"></div>
@@ -209,35 +163,4 @@
     <!-- Food Menu Section Ends Here -->
 
 
-    <!-- Social Section Starts Here -->
-    <section class="social">
-        <div class="container text-center">
-            <ul>
-                
-                <li>
-                    <a href="#"><img src="img/instagram.png" width="30"></a>
-                </li>
-                <li>
-                    <a href="#"><img src="img/facebook.png" width="30"></a>
-                </li>
-                <li>
-                    <a href="#"><img src="img/twitter.png" width="30"></a>
-                </li>
-            </ul>
-            
-        </div>
-    </section>
-    <!-- social Section Ends Here -->
-
-
-    <!-- Footer Section Starts Here -->
-    <section class="footer">
-        <div class="container text-center">
-            <p>All rights reserved. Designed by <a href="https://github.com/efobo">efobo</a></p>
-        </div>
-    </section>
-    <!-- footer Section Ends Here -->
-
-
-</body>
-</html>
+   <?php include('partials-front/footer.php'); ?>
