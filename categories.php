@@ -22,7 +22,7 @@
                 
                 ?>
 
-                <a href="category-foods.html">
+                <a href="<?php echo SITEURL;?>category-foods.php?category_id=<?php echo $id; ?>">
                     <div class="box-3 float-container">
                         <?php
                         
@@ -42,7 +42,7 @@
                         ?>
                         
 
-                        <h3 class="float-text text-white"><?php echo $title; ?></h3>
+                        <h3 class="float-text text-white grey-bg darkred-hover"><?php echo $title; ?></h3>
                     </div>
                 </a>
                 <?php
