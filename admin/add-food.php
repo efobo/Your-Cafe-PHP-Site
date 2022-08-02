@@ -43,7 +43,7 @@
                 <tr>
                     <td>Select Image: </td>
                     <td>
-                        <input type="file" name="image">
+                        <input type="file" name="image" class="btn-secondary">
                     </td>
                 </tr>
 

@@ -81,7 +81,7 @@
                 <tr>
                     <td>Select New Image: </td>
                     <td>
-                        <input type="file" name="image" class="btn-secondary">
+                        <input type="file" name="image" class="btn-secondary" >
                     </td>
                 </tr>
 
