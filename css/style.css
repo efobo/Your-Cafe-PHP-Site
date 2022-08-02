@@ -126,6 +126,24 @@ h3 {
 
 /* css for food search section */
 
+.food-search-box {
+    width: 50%;
+    margin:0 auto;
+    padding: 1%;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Century Gothic';
+}
+
+.food-search-box a {
+    font-family: 'Century Gothic';
+}
+
+.food-search-box h2 {
+    font-family: 'Century Gothic';
+}
+
 .food-search{
     background-image: url(../img/bg.jpg);
     background-size: cover;
@@ -141,6 +159,7 @@ h3 {
     border: none;
     border-radius: 5px;
 }
+
 
 
 /* css for Categories */

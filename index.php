@@ -3,7 +3,7 @@
     <!-- Food Search Section Starts Here -->
     <section class="food-search text-center">
         <div class="container">
-            <form action="food-search.html" method="POST">
+            <form action="<?php echo SITEURL; ?>food-search.php" method="POST">
                 <input type="search" name="search" placeholder="search for a dish" required>
                 <input type="submit" value="search" class="btn btn-primary">
             </form>
