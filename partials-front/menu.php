@@ -28,7 +28,7 @@
                         <a href="<?php echo SITEURL; ?>categories.php">Categories</a>
                     </li>
                     <li>
-                        <a href="<?php echo SITEURL; ?>foods.php">Food</a>
+                        <a href="<?php echo SITEURL; ?>foods.php">Menu</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
