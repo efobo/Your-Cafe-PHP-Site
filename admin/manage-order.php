@@ -5,7 +5,16 @@
     <div class="wrapper">
         <h1>Manage Order</h1>
 
-        <br><br><br>
+        <br><br>
+        <?php 
+        
+            if (isset($_SESSION['update']))
+            {
+                echo $_SESSION['update'];
+                echo "<br><br>";
+                unset($_SESSION['update']);
+            }
+        ?>
 
         <table class="tbl-full">
             <tr>
@@ -55,14 +64,34 @@
                             <td><?php echo $qty; ?></td>
                             <td><?php echo $total; ?></td>
                             <td><?php echo $order_date; ?></td>
-                            <td><?php echo $status; ?></td>
+
+                            <td>
+                                <?php 
+                                    if ($status == "Ordered")
+                                    {
+                                        echo "<label>$status</label>";
+                                    }
+                                    if ($status == "On Delivery")
+                                    {
+                                        echo "<label style='color: orange;'>$status</label>";
+                                    }
+                                    if ($status == "Delivered")
+                                    {
+                                        echo "<label style='color: green;'>$status</label>";
+                                    }
+                                    if ($status == "Cancelled")
+                                    {
+                                        echo "<label style='color: red;'>$status</label>";
+                                    }
+                                ?>
+                            </td>
+
                             <td><?php echo $customer_name; ?></td>
                             <td><?php echo $customer_contact; ?></td>
                             <td><?php echo $customer_email; ?></td>
                             <td><?php echo $customer_address; ?></td>
                             <td>
-                                <a href="#" class="btn-secondary">Update Order</a>
-                                <a href="#" class="btn-danger">Delete Order</a>
+                                <a href="<?php echo SITEURL; ?>admin/update-order.php?id=<?php echo $id; ?>" class="btn-secondary">Update Order</a>
                                 
                             </td>
                         </tr>

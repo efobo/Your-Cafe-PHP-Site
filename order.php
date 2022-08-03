@@ -105,7 +105,7 @@
                     $order_date = date("Y-m-d h:i:s");
 
 
-                    // Ordered, On Delivery, Delivered, Cancelled
+                    
                     $status = "Ordered";
 
                     $customer_name = $_POST['full-name'];
