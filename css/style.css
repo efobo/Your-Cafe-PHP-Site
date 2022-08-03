@@ -92,6 +92,15 @@ h3 {
     left: 40%;
 }
 
+.error {
+    padding: 2%;
+    color: red;
+}
+
+.success {
+    padding: 2%;
+    color:green;
+}
 
 /* css for navbar section */
 .logo{

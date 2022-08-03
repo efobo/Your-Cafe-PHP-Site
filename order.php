@@ -37,7 +37,7 @@
 
             <h2 class="text-center">Fill this form to confirm your order</h2>
             <br><br>
-            <form action="#" class="order">
+            <form action="" method="POST" class="order">
                 <fieldset>
                     <legend>Selected Food</legend>
                     
@@ -62,7 +62,10 @@
 
                     <div class="food-menu-desc">
                         <h3><?php echo $title; ?></h3>
+                        <input type="hidden" name="food" value="<?php echo $title; ?>">
+
                         <p class="food-price">$<?php echo $price; ?></p>
+                        <input type="hidden" name="price" value="<?php echo $price; ?>">
 
                         <div class="order-label">Quantity</div>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
@@ -89,6 +92,55 @@
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
                 </fieldset>
             </form>
+
+            <?php
+            
+                if (isset($_POST['submit']))
+                {
+                    $food = $_POST['food'];
+                    $price = $_POST['price'];
+                    $qty = $_POST['qty'];
+                    $total = $price * $qty;
+
+                    $order_date = date("Y-m-d h:i:s");
+
+
+                    // Ordered, On Delivery, Delivered, Cancelled
+                    $status = "Ordered";
+
+                    $customer_name = $_POST['full-name'];
+                    $customer_contact = $_POST['contact'];
+                    $customer_email = $_POST['email'];
+                    $customer_address = $_POST['address'];
+
+                    $sql2 = "INSERT INTO tbl_order SET
+                        food='$food',
+                        price=$price,
+                        qty=$qty,
+                        total=$total,
+                        order_date='$order_date',
+                        status='$status',
+                        customer_name='$customer_name',
+                        customer_contact='$customer_contact',
+                        customer_email='$customer_email',
+                        customer_address='$customer_address'
+                        ";
+                        //echo $sql2; die();
+                    $res2 = mysqli_query($conn, $sql2);
+
+                    if ($res2)
+                    {
+                        $_SESSION['order'] = "<div class='success text-center'>Dish Ordered Successfully</div>";
+                        header('location:'.SITEURL);
+                    }
+                    else
+                    {
+                        $_SESSION['order'] = "<div class='error text-center'>Failed to Order Dish</div>";
+                        header('location:'.SITEURL);
+                    }
+
+                }
+            ?>
         </div>
     </section>
     <!-- Food Search Section Ends Here -->

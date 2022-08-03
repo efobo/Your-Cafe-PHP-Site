@@ -11,6 +11,14 @@
     </section>
     <!-- Food Search Section Ends Here -->
 
+    <?php
+        if (isset($_SESSION['order']))
+        {
+            echo $_SESSION['order'];
+            unset($_SESSION['order']);
+        }
+    ?>
+
 
     <!-- Categories Section Starts Here -->
     <section class="categories">
