@@ -60,9 +60,9 @@
         // echo "Button Clicked";
         
         // Get the Data from form
-        $full_name = $_POST['full_name'];
-        $username = $_POST['username'];
-        $password = md5($_POST['password']);
+        $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = mysqli_real_escape_string($conn, md5($_POST['password']));
 
         // SQL Query to save the Data into Database
         $sql = "INSERT INTO tbl_admin SET

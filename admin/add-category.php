@@ -80,7 +80,7 @@
         
             if (isset($_POST['submit']))
             {
-                $title = $_POST['title'];
+                $title = mysqli_real_escape_string($conn, $_POST['title']);
                 
 
                 if (isset($_POST['featured']))
