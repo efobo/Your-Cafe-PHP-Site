@@ -1,10 +1,9 @@
 # Your ♥ Café
 
-<p>В разработке...</p>
-
 <br><br>
 
 ##### Главная страница (URL)
+
 
 
 <img src="readme/1.png">
@@ -96,6 +95,16 @@
 <img src="readme/update-food.png">
 
 <br><br>
+
+##### URL/admin/manage-order.php
+
+<img src="readme/manage-order.png">
+
+<br><br>
+
+##### URL/admin/update-order.php
+
+<img src="readme/update-order.png">
 
 <p></p>
 <p></p>
