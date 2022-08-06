@@ -10,6 +10,18 @@
 
 <br><br>
 
+##### URL/admin/categories.php
+
+<img src="readme/categories.png">
+
+<br><br>
+
+##### URL/admin/foods.php
+
+<img src="readme/foods.png">
+
+<br><br>
+
 ##### URL/admin/
 
 <p>Добавлены возможности:</p>
